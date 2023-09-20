@@ -1,5 +1,5 @@
 function [dia,mes,estacion] = f_month_dayj(diaj,year,dir_data)
-    if (m_bis(year))
+    if (f_bis(year))
         diaanio = readmatrix(dir_data + 'diasaniobis.csv');
     else
         diaanio = readmatrix( dir_data + 'diaanio.csv');
