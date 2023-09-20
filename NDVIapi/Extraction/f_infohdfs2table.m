@@ -23,6 +23,9 @@ if( ismember(product,products) )
     v6 = string(v6);
     v7 = string(v7);
     calidad = zeros(1,num_archivos/2) ;
+    productos = zeros(1,num_archivos/2) ;
+    productos = string(productos);
+    
     
     if(num_archivos > 0)
         for k = 1:2:num_archivos
@@ -32,16 +35,18 @@ if( ismember(product,products) )
             [dia(i),mes(i),estacion(i)] = f_month_dayj(diaj(i),anio(i),dir_data);
     
     
-            v6(i) = lista_archivos(k).name; 
-            v7(i) = lista_archivos(k+1).name; 
+            v6(i) = lista_archivos(k).folder + "\" + lista_archivos(k).name; 
+            v7(i) = lista_archivos(k).folder + "\" + lista_archivos(k+1).name; 
     
             
             calidad(i) = -1;
+            productos(i) = ""+product;
+
             i=i+1;
     
         end
     
-        info_hdf = table(idx',diaj',dia',mes',estacion',anio',v6',v7',calidad','VariableNames',["idx","diaj","dia","mes","estacion","anio","v6","v7","Calidad"]);
+        info_hdf = table(idx',diaj',dia',mes',estacion',anio',v6',v7',calidad',productos','VariableNames',["idx","diaj","dia","mes","estacion","anio","v6","v7","Calidad","Producto"]);
     else
         warnig(">>>>> No hay imagenes disponibles");
     end
