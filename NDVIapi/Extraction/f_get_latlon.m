@@ -3,11 +3,11 @@ import matlab.io.hdfeos.*
 disp(">>>>> Obteniendo latitud y longitud");
 
 product = ["MOD13A1";"MOD13A2";"MOD13Q1"];
-grid = ["MOD13A1";"MODIS_Grid_16DAY_1km_VI";"MOD13Q1"];
-ndvi = ["MOD13A1";"1 km 16 days NDVI";"MOD13Q1"];
-evi = ["MOD13A1";"1 km 16 days EVI";"MOD13Q1"];
-quality = ["MOD13A1";"1 km 16 days VI Quality";"MOD13Q1"];
-reliability = ["MOD13A1";"1 km 16 days pixel reliability";"MOD13Q1"];
+grid = ["MOD13A1";"MODIS_Grid_16DAY_1km_VI";"MODIS_Grid_16DAY_250m_500m_VI"];
+ndvi = ["MOD13A1";"1 km 16 days NDVI";"250m 16 days NDVI"];
+evi = ["MOD13A1";"1 km 16 days EVI";"250m 16 days EVI"];
+quality = ["MOD13A1";"1 km 16 days VI Quality";"250m 16 days VI Quality"];
+reliability = ["MOD13A1";"1 km 16 days pixel reliability";"250m 16 days pixel reliability"];
 mod13 = table(product,grid,ndvi,evi,quality,reliability);
 
 [num_registros,~] = size(info_hdf);
