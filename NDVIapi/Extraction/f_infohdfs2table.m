@@ -1,6 +1,5 @@
-function info_hdf = m_infohdfs2table(dir_data,product)
+function info_hdf = f_infohdfs2table(dir_data,product)
 disp(">>>>> Obteniendo información de archivos sobre fechas ... ");
-
 
 products = {'MOD13A1', 'MOD13A2', 'MOD13Q1'};
 
@@ -30,7 +29,7 @@ if( ismember(product,products) )
             idx(i) = i;
             diaj(i) = str2double( extractBetween(lista_archivos(k).name,14,16));
             anio(i) = str2double(extractBetween(lista_archivos(k).name,10,13));
-            [dia(i),mes(i),estacion(i)] = m_mes_diaj(diaj(i),anio(i),dir_data);
+            [dia(i),mes(i),estacion(i)] = f_month_dayj(diaj(i),anio(i),dir_data);
     
     
             v6(i) = lista_archivos(k).name; 
