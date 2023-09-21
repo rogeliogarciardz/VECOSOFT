@@ -1,4 +1,4 @@
-function [lat,lon,data_test] = f_get_latlon(info_hdf,coord_1k_v6_inicio,coord_1k_v6_tam,coord_1k_v7_inicio,coord_1k_v7_tam)
+function [lat,lon,data_test] = f_get_latlon_test(info_hdf,coord_1k_v6_inicio,coord_1k_v6_tam,coord_1k_v7_inicio,coord_1k_v7_tam)
 import matlab.io.hdfeos.*
 disp(">>>>> Obteniendo latitud y longitud");
 
@@ -40,7 +40,7 @@ if(num_registros > 0)
     %mezclar matrices
     lat = [lat1 lat2];
     lon = [lon1 lon2];
-    data_test = [ndvi1 ndvi2];
+    data_test =[ndvi1 ndvi2];
 end
 
 end
