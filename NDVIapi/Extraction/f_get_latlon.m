@@ -3,7 +3,7 @@ import matlab.io.hdfeos.*
 disp(">>>>> Obteniendo latitud y longitud");
 
 product = ["MOD13A1";"MOD13A2";"MOD13Q1"];
-grid = ["MOD13A1";"MODIS_Grid_16DAY_1km_VI";"MODIS_Grid_16DAY_250m_500m_VI"];
+grid = ["MOD13A1 ";"MODIS_Grid_16DAY_1km_VI";"MODIS_Grid_16DAY_250m_500m_VI"];
 ndvi = ["MOD13A1";"1 km 16 days NDVI";"250m 16 days NDVI"];
 evi = ["MOD13A1";"1 km 16 days EVI";"250m 16 days EVI"];
 quality = ["MOD13A1";"1 km 16 days VI Quality";"250m 16 days VI Quality"];
