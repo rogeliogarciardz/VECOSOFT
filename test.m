@@ -2,12 +2,18 @@ disp("Hola VECOSOFT");
 import matlab.io.hdfeos.*
 % info_hdf = f_infohdfs2table(dir_data,"MOD13Q1");
 
+% 
+% i_v06 = [3950 3950];
+% t_v06 = [850 462];
+% 
+% i_v07 = [0 3950];
+% t_v07 = [30 462];
 
 i_v06 = [3950 3950];
-t_v06 = [850 462];
+t_v06 = [462 850];
 
 i_v07 = [0 3950];
-t_v07 = [30 462];
+t_v07 = [462 30];
 
 i_v08=[0 0];
 % t_v08=[1000 2400];
