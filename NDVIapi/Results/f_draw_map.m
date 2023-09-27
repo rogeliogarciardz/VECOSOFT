@@ -5,19 +5,19 @@ function f_draw_map(lon_map,lat_map,lon,lat,data,ptitle,pclim,ppcolor,plabel)
     ndvi_map_g = flipud( ndvi_map_r );                                     % green
     ndvi_map_b = zeros( size( ndvi_map_r ) );                              % blue
     ndvi_colormap = [ ndvi_map_r  ndvi_map_g  ndvi_map_b ];
-
+ 
+    if(~isnumeric( ppcolor))
+        colormap(ndvi_colormap);
+    else
+        colormap(ppcolor);
+    end
 
     %%dibujar mapa ndvi proyeccion mercator 
     m_proj('mercator','lon',lon_map,'lat',lat_map);
       
     %%dibujar el mapa
     m_pcolor(lon,lat,data); shading interp ;
-
-    if(ppcolor == "NDVI")
-        colormap(ndvi_colormap);
-    else
-        colormap(ppcolor);
-    end
+  
     if plabel ~= ""    
         colorbar('eastoutside');
         c = colorbar;
@@ -38,7 +38,7 @@ function f_draw_map(lon_map,lat_map,lon,lat,data,ptitle,pclim,ppcolor,plabel)
     
     %m_northarrow(-101,23.5,.4,'type',2);
     % Estrella del norte 
-    m_northarrow(-97.9,23.5,.4,'type',2);
+    %m_northarrow(-97.9,23.5,.4,'type',2);
 
     if(~isempty (ptitle))
         title(ptitle);
