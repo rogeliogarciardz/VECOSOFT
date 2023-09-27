@@ -1,6 +1,6 @@
 %Calcula el maximo por pixel de una matriz en 3 dimensiones 
 
-function m2d = m_max_3dpp(m3d)
+function m2d = f_max_3dpp(m3d)
     s = size(m3d);
 
     m2d = permute(m3d,[1 3 2]);
