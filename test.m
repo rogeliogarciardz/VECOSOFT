@@ -21,3 +21,4 @@ title(length(serie_nv))
 % disp("Pixeles Anomalos: "+length(malos));
 
 new_data=f_fillmissing_linear(nuevos,1);
+
