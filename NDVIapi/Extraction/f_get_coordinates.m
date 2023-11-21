@@ -1,4 +1,4 @@
-function [coord_1k_v6_inicio,coord_1k_v6_tam,coord_1k_v7_inicio,coord_1k_v7_tam,ndvi_tam] = f_get_coordinates(dir_data,kml,info_hdf)
+function [coord_1k_v6_inicio,coord_1k_v6_tam,coord_1k_v7_inicio,coord_1k_v7_tam,ndvi_tam] = f_get_coordinates(dir_data,kml,info_hdf,umbral)
 import matlab.io.hdfeos.*
 disp(">>>>> Obteniendo la zona de estudio");
 
@@ -12,7 +12,6 @@ mod13 = table(product,grid,ndvi,evi,quality,reliability);
 
 lista_archivos = dir(dir_data+'MOD13A2\061\MOD13A2.A2022257.h08v*.hdf');
 num_archivos = length(lista_archivos);
-a=0;
 
 if(num_archivos > 0)
 
@@ -104,13 +103,15 @@ else
      [row,~,~] = find(lon2(:,col(1))>=max_lon);
     id_max_lon = row(1);
 end
+%% Ajustes
+id_max_lat=id_max_lat-4;
+id_min_lat=id_min_lat+4;
 
+id_max_lon=id_max_lon+umbral;
+id_min_lon=id_min_lon-umbral;
 
- 
-%%
-% longitud
+%% longitud
 a=sum(plat);
-
 switch a
     case 0
         %cuadrante de inicio y tamaño del area de estudio
@@ -134,19 +135,30 @@ switch a
         ndvi_tam = [id_max_lon-id_min_lon tam_cuad-id_max_lat+id_min_lat];
 
     case 2
-         %cuadrante de inicio y tamaño del area de estudio
-        coord_1k_v7_inicio = [0 0];
-        coord_1k_v7_tam = [0 0];
-        
         %h08v06
         coord_1k_v6_inicio = [id_min_lon id_max_lat];
         coord_1k_v6_tam = [id_max_lon-id_min_lon id_min_lat-id_max_lat];
-        
+
+        %cuadrante de inicio y tamaño del area de estudio
+        coord_1k_v7_inicio = [0 0];
+        coord_1k_v7_tam = [0 0];
+
         ndvi_tam = [id_max_lon-id_min_lon id_min_lat-id_max_lat];
     otherwise
         disp('ups!');    
 end
 
+%% Umbral para incluir regiones que quedan fuera 
+if (exist('umbral', 'var')) 
+    umbral_lon = umbral*ndvi_tam(1);
+    umbral_lat = umbral*ndvi_tam(2);
+    disp("umbral LON:" + umbral_lon);
+    disp("umbral LAT:" + umbral_lat);
+
+    umbral_lon = floor( umbral_lon /2);
+    disp("A LON:" + umbral_lon);
+
+end
 
 
 end
