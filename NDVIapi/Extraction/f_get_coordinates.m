@@ -1,4 +1,4 @@
-function [coord_1k_v6_inicio,coord_1k_v6_tam,coord_1k_v7_inicio,coord_1k_v7_tam,ndvi_tam] = f_get_coordinates(dir_data,kml,info_hdf,umbral)
+function [coord_1k_v6_inicio,coord_1k_v6_tam,coord_1k_v7_inicio,coord_1k_v7_tam,ndvi_tam] = f_get_coordinates(dir_data,kml,producto,info_hdf,umbral)
 import matlab.io.hdfeos.*
 disp(">>>>> Obteniendo la zona de estudio");
 
@@ -10,7 +10,10 @@ quality = ["MOD13A1";"1 km 16 days VI Quality";"250m 16 days VI Quality"];
 reliability = ["MOD13A1";"1 km 16 days pixel reliability";"250m 16 days pixel reliability"];
 mod13 = table(product,grid,ndvi,evi,quality,reliability);
 
-lista_archivos = dir(dir_data+'MOD13A2\061\MOD13A2.A2022257.h08v*.hdf');
+dir_archivos = dir_data+"\"+producto+"\061\*.hdf";
+disp(dir_archivos);
+
+lista_archivos = dir(dir_archivos);
 num_archivos = length(lista_archivos);
 
 if(num_archivos > 0)
@@ -107,8 +110,16 @@ end
 id_max_lat=id_max_lat-4;
 id_min_lat=id_min_lat+4;
 
-id_max_lon=id_max_lon+umbral;
-id_min_lon=id_min_lon-umbral;
+ajuste = floor( umbral * (id_max_lon-id_min_lon));
+
+if( (id_max_lon+ajuste) > 0 && (id_max_lon+ajuste) <  tam_cuad )
+    id_max_lon=id_max_lon+ajuste;
+end
+
+if( (id_min_lon-ajuste) > 0 && (id_min_lon-ajuste) <  tam_cuad )
+    id_min_lon=id_min_lon-ajuste;
+end
+
 
 %% longitud
 a=sum(plat);
@@ -147,19 +158,6 @@ switch a
     otherwise
         disp('ups!');    
 end
-
-%% Umbral para incluir regiones que quedan fuera 
-if (exist('umbral', 'var')) 
-    umbral_lon = umbral*ndvi_tam(1);
-    umbral_lat = umbral*ndvi_tam(2);
-    disp("umbral LON:" + umbral_lon);
-    disp("umbral LAT:" + umbral_lat);
-
-    umbral_lon = floor( umbral_lon /2);
-    disp("A LON:" + umbral_lon);
-
-end
-
 
 end
 
