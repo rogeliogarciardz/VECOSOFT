@@ -10,7 +10,7 @@ quality = ["MOD13A1";"1 km 16 days VI Quality";"250m 16 days VI Quality"];
 reliability = ["MOD13A1";"1 km 16 days pixel reliability";"250m 16 days pixel reliability"];
 mod13 = table(product,grid,ndvi,evi,quality,reliability);
 
-dir_archivos = dir_data+"\"+producto+"\061\*.hdf";
+dir_archivos = dir_data+""+producto+"\061\*.hdf";
 disp(dir_archivos);
 
 lista_archivos = dir(dir_archivos);
