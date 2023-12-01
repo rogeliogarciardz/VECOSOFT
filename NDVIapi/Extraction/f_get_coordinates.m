@@ -36,6 +36,7 @@ if(num_archivos > 0)
     
     producto = info_hdf(1,"Producto").Producto;
     actual = mod13(strcmp(mod13.product,producto),:);
+
     % Abrir primer h08v06 archivo hdf para obtener las matrices de latitud y
     % longitud. Despues abrir el segundo archvio h08v07 y unir al primero
     % para tener la información completa
@@ -44,7 +45,7 @@ if(num_archivos > 0)
     % indicar que requerimos los datos de MODIS
     gridID = gd.attach(gfid, actual(1,"grid").grid );
     %obtenemos el ndvi, latitud y longitud
-    [ndvi1,lat1,lon1] = gd.readField(gridID,actual(1,"ndvi").ndvi); 
+    [~,lat1,lon1] = gd.readField(gridID,actual(1,"ndvi").ndvi); 
     % cerramos los punteros al archivo
     gd.detach(gridID);
     gd.close(gfid);
@@ -53,7 +54,7 @@ if(num_archivos > 0)
     % indicar que requerimos los datos de MODIS
     gridID = gd.attach(gfid,actual(1,"grid").grid );
     %obtenemos el ndvi, latitud y longitud
-    [ndvi2,lat2,lon2] = gd.readField(gridID,actual(1,"ndvi").ndvi);
+    [~,lat2,lon2] = gd.readField(gridID,actual(1,"ndvi").ndvi);
     % cerramos los punteros al archivo
     gd.detach(gridID);
     gd.close(gfid);
