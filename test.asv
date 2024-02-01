@@ -4,7 +4,7 @@
 % X = [meas(:,1), meas(:,2), meas(:,3), meas(:,4)]; 
   
 % Apply k-means clustering with k=3 
-k = 2; 
+k = 3; 
 [idx, centroids] = kmeans(X, k); 
   
 % Plot the results 
@@ -36,5 +36,4 @@ ylabel('Sepal Width');
 % xlabel('X1'); 
 % ylabel('X2'); 
 
-% data_km_1=[data_km.Mediana(:),data_km.Promedio(:),data_km.Moda(:),data_km.Rango(:),data_km.Desviacion(:),data_km.Minimos(:),data_km.Maximos(:),data_km.Mad(:)];
-
+data_km_1=[data_km.Mediana(:);data_km.Promedio(:);data_km.Moda(:);data_];

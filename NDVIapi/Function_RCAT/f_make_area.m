@@ -8,8 +8,13 @@ function [area_naranja] = f_make_area(arr_ndvi,result_net,study_area)
          for j=1:ancho
             if(study_area(i,j)==1)
                 mask_tep(i,j) = result_net(ind_temp);
+% esta es una linea temporarl de test
+%                 if(result_net(ind_temp)==3)
+%                     mask_tep(i,j) = result_net(ind_temp);                    
+%                 end
                 ind_temp=ind_temp+1;
             end
+% test finish            
         end
     end
     
