@@ -1,14 +1,14 @@
 function f_draw_kml(dir_data,kml,varargin)
-    % f_draw_kml draw a kml file over a map. 
+    % F_DRAW_KML draw a kml file over a map. 
     %
     %
-    % f_draw_kml("C:\dirdata","kmlfile") draw a kml with a thin black line 
+    % F_DRAW_KML("C:\dirdata","kmlfile") draw a kml with a thin black line 
     %
-    % f_draw_kml("C:\dirdata","kmlfile",n) draw a kml whit a npx black line 
+    % F_DRAW_KML("C:\dirdata","kmlfile",n) draw a kml whit a npx black line 
     %
-    % f_draw_kml("C:\dirdata","kmlfile",n,color)  draw a kml whit a npx color line 
+    % F_DRAW_KML("C:\dirdata","kmlfile",n,color)  draw a kml whit a npx color line 
     %
-    % f_draw_kml("C:\dirdata","kmlfile",n,color,"Label") draw a kml whit a
+    % F_DRAW_KML("C:\dirdata","kmlfile",n,color,"Label") draw a kml whit a
     % npx color line and over a label 
     %
     %  Written by:  (2024) Rogelio García Rodríguez 

@@ -46,7 +46,7 @@ function f_draw_map(lon_map,lat_map,lon,lat,data,varargin)
     m_pcolor(lon,lat,data); shading interp ;
     %dibuja el recuadro del mapa
     %m_grid('box','fancy','grid','none','fontsize',10);
-    m_grid('linestyle','none','box','fancy','tickdir','out');
+    m_grid('linestyle','none','box','fancy','tickdir','out','fontsize',10);
     %m_grid('linewi',2,'tickdir','out');
     % Regla de escala
     m_ruler([.05 .36],.1,3,'fontsize',5)
